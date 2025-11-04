@@ -38,7 +38,11 @@ npm install
 
 Create a `.env.local` file in the root directory:
 ```bash
-cp .env.local.example .env.local
+# Windows
+copy env.example .env.local
+
+# Mac/Linux
+cp env.example .env.local
 ```
 
 **📖 Complete API Keys Guide:** See [API_KEYS_GUIDE.md](./API_KEYS_GUIDE.md) for detailed instructions on where to get all API keys.
