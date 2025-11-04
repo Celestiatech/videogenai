@@ -5,14 +5,14 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-slate-900/50 border-t border-white/10 mt-20">
+    <footer className="bg-slate-900/80 backdrop-blur-lg border-t border-white/10 mt-20">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Sparkles className="w-6 h-6 text-purple-400" />
-              <span className="text-white font-bold text-lg">AI Video Gen</span>
+              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent font-bold text-lg">AI Video Gen</span>
             </div>
             <p className="text-gray-400 text-sm">
               Transform your ideas into stunning videos with the power of AI.
