@@ -4,6 +4,7 @@ import './globals.css'
 import { Providers } from './providers'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import ScrollToTop from '@/components/ScrollToTop'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -70,11 +71,14 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} antialiased`}>
         <Providers>
           <Navbar />
-          {children}
+          <div className="relative z-10">
+            {children}
+          </div>
           <Footer />
+          <ScrollToTop />
         </Providers>
       </body>
     </html>

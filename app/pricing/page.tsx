@@ -165,15 +165,30 @@ export default function PricingPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 px-4 py-16">
-      <div className="container mx-auto max-w-7xl">
+    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 px-4 py-16 relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="fixed inset-0 z-0">
+        <div className="absolute top-20 right-10 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div className="absolute bottom-20 left-10 w-80 h-80 bg-pink-500/20 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
+      </div>
+      
+      <div className="container mx-auto max-w-7xl relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mb-4">
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.2, type: 'spring' }}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-lg rounded-full border border-white/20 mb-6"
+          >
+            <Sparkles className="w-4 h-4 text-purple-400 animate-pulse" />
+            <span className="text-sm text-gray-300">Flexible Pricing</span>
+          </motion.div>
+          <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mb-4">
             Choose Your Plan
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
@@ -191,10 +206,11 @@ export default function PricingPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className={`relative bg-white/10 backdrop-blur-lg rounded-2xl p-8 border-2 ${
+                whileHover={{ scale: 1.05 }}
+                className={`relative glass-effect rounded-2xl p-8 border-2 transition-all ${
                   plan.popular
-                    ? 'border-purple-500 shadow-2xl shadow-purple-500/50 scale-105'
-                    : 'border-white/20'
+                    ? 'border-purple-500 shadow-2xl shadow-purple-500/50 scale-105 hover:shadow-purple-500/70'
+                    : 'border-white/20 hover:border-purple-500/50'
                 }`}
               >
                 {plan.popular && (
@@ -234,7 +250,7 @@ export default function PricingPage() {
                   disabled={plan.id === 'free' || loadingPlan === plan.id}
                   className={`w-full py-3 px-6 rounded-lg font-semibold text-white transition-all ${
                     plan.buttonStyle
-                  } ${plan.id === 'free' ? 'cursor-default' : 'hover:shadow-lg'} disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2`}
+                  } ${plan.id === 'free' ? 'cursor-default' : 'hover:shadow-lg hover-lift'} disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2`}
                 >
                   {loadingPlan === plan.id ? (
                     <>
@@ -255,7 +271,7 @@ export default function PricingPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 text-center"
+          className="glass-effect rounded-2xl p-8 text-center hover-lift"
         >
           <h2 className="text-2xl font-bold text-white mb-4">Supported Payment Methods</h2>
           <p className="text-gray-300 mb-6">
@@ -279,19 +295,19 @@ export default function PricingPage() {
         >
           <h2 className="text-3xl font-bold text-white text-center mb-8">Frequently Asked Questions</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-lg rounded-lg p-6 border border-white/20">
+            <div className="glass-effect rounded-lg p-6 hover-lift">
               <h3 className="text-white font-semibold mb-2">Can I change plans later?</h3>
               <p className="text-gray-300 text-sm">Yes, you can upgrade or downgrade your plan at any time from your dashboard.</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-lg rounded-lg p-6 border border-white/20">
+            <div className="glass-effect rounded-lg p-6 hover-lift">
               <h3 className="text-white font-semibold mb-2">Is there a refund policy?</h3>
               <p className="text-gray-300 text-sm">We offer a 7-day money-back guarantee if you're not satisfied.</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-lg rounded-lg p-6 border border-white/20">
+            <div className="glass-effect rounded-lg p-6 hover-lift">
               <h3 className="text-white font-semibold mb-2">Are payments secure?</h3>
               <p className="text-gray-300 text-sm">All payments are processed securely through Razorpay, a PCI DSS compliant payment gateway.</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-lg rounded-lg p-6 border border-white/20">
+            <div className="glass-effect rounded-lg p-6 hover-lift">
               <h3 className="text-white font-semibold mb-2">What happens after payment?</h3>
               <p className="text-gray-300 text-sm">You'll receive a confirmation email and your account will be upgraded immediately.</p>
             </div>

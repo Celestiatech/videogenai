@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import { Video, Image as ImageIcon, Sparkles, Zap, Shield, Globe, Clock } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 export const metadata: Metadata = {
   title: 'Features - AI Video Generator',
@@ -41,8 +42,14 @@ export default function FeaturesPage() {
   ]
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 px-4 py-16">
-      <div className="container mx-auto max-w-6xl">
+    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 px-4 py-16 relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="fixed inset-0 z-0">
+        <div className="absolute top-20 right-10 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div className="absolute bottom-20 left-10 w-80 h-80 bg-pink-500/20 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
+      </div>
+      
+      <div className="container mx-auto max-w-6xl relative z-10">
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mb-4">
             Powerful Features
@@ -56,9 +63,13 @@ export default function FeaturesPage() {
           {features.map((feature, index) => {
             const Icon = feature.icon
             return (
-              <div
+              <motion.div
                 key={index}
-                className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20 hover:border-purple-500/50 transition-all"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="glass-effect rounded-xl p-6 hover:border-purple-500/50 transition-all hover-lift"
               >
                 <div className="flex items-center gap-4 mb-4">
                   <div className="p-3 bg-purple-500/20 rounded-lg">
@@ -67,7 +78,7 @@ export default function FeaturesPage() {
                   <h3 className="text-xl font-bold text-white">{feature.title}</h3>
                 </div>
                 <p className="text-gray-300">{feature.description}</p>
-              </div>
+              </motion.div>
             )
           })}
         </div>
