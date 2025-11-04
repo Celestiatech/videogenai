@@ -1,0 +1,78 @@
+import { Metadata } from 'next'
+import { Video, Image as ImageIcon, Sparkles, Zap, Shield, Globe, Clock } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Features - AI Video Generator',
+  description: 'Discover powerful features of AI Video Generator - text to video, image to video, HD quality, and more.',
+}
+
+export default function FeaturesPage() {
+  const features = [
+    {
+      icon: Video,
+      title: 'Text to Video',
+      description: 'Transform your text descriptions into stunning videos with AI. Simply describe what you want, and our AI creates it.',
+    },
+    {
+      icon: ImageIcon,
+      title: 'Image to Video',
+      description: 'Animate static images into dynamic videos. Bring your photos to life with smooth animations.',
+    },
+    {
+      icon: Zap,
+      title: 'Lightning Fast',
+      description: 'Generate videos in minutes, not hours. Our optimized AI models deliver results quickly.',
+    },
+    {
+      icon: Shield,
+      title: 'High Quality',
+      description: 'Create professional-quality videos up to 4K resolution. Perfect for any use case.',
+    },
+    {
+      icon: Globe,
+      title: 'No Watermarks',
+      description: 'Premium plans include watermark-free videos. Own your content completely.',
+    },
+    {
+      icon: Clock,
+      title: '24/7 Available',
+      description: 'Generate videos anytime, anywhere. Our platform is always available when you need it.',
+    },
+  ]
+
+  return (
+    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 px-4 py-16">
+      <div className="container mx-auto max-w-6xl">
+        <div className="text-center mb-16">
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mb-4">
+            Powerful Features
+          </h1>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            Everything you need to create amazing videos with AI
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((feature, index) => {
+            const Icon = feature.icon
+            return (
+              <div
+                key={index}
+                className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20 hover:border-purple-500/50 transition-all"
+              >
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="p-3 bg-purple-500/20 rounded-lg">
+                    <Icon className="w-6 h-6 text-purple-400" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white">{feature.title}</h3>
+                </div>
+                <p className="text-gray-300">{feature.description}</p>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    </main>
+  )
+}
+

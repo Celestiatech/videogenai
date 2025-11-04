@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /dashboard
+Disallow: /login
+Disallow: /register
+
+Sitemap: https://aivideogen.com/sitemap.xml
+
