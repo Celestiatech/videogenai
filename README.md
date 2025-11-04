@@ -41,24 +41,27 @@ Create a `.env.local` file in the root directory:
 cp .env.local.example .env.local
 ```
 
-Fill in the required values:
-- **NextAuth**: Generate a secret with `openssl rand -base64 32`
-- **Razorpay**: Get keys from https://dashboard.razorpay.com/app/keys
-- **Email (SMTP)**: Configure your email service (Gmail, SendGrid, etc.)
-- **Base URL**: Your production domain
+**📖 Complete API Keys Guide:** See [API_KEYS_GUIDE.md](./API_KEYS_GUIDE.md) for detailed instructions on where to get all API keys.
 
-4. Set up your AI video generation API key:
+**Quick Setup:**
+- **AI Video**: Get `FAL_KEY` from https://fal.ai/dashboard (or use Replicate)
+- **NextAuth**: Generate secret with `openssl rand -base64 32`
+- **Razorpay**: Get keys from https://dashboard.razorpay.com/app/keys
+- **Email**: Use Gmail (for testing) or SendGrid (for production)
+- **Base URL**: Use `http://localhost:3000` for development
+
+4. Set up your AI video generation API key (REQUIRED for video generation):
 
    Choose one of these services:
    
-   **Option 1: fal.ai (Recommended)**
+   **Option 1: fal.ai (Recommended - Already Installed)**
    - Sign up at https://fal.ai
    - Get your API key from https://fal.ai/dashboard
    - Add to `.env.local`:
    ```
    FAL_KEY=your-api-key-here
    ```
-   - Uncomment the fal.ai integration in `app/api/generate-video/route.ts`
+   - The integration is already active - just add your API key!
 
    **Option 2: Replicate**
    - Sign up at https://replicate.com
@@ -68,7 +71,7 @@ Fill in the required values:
    ```
    REPLICATE_API_TOKEN=your-token-here
    ```
-   - Uncomment the Replicate integration in `app/api/generate-video/route.ts`
+   - The integration will automatically work once you add the token!
 
 5. Run the development server:
 ```bash
