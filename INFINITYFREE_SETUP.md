@@ -6,10 +6,12 @@
 
 ## 📋 Your FTP Credentials
 
+⚠️ **IMPORTANT:** Never commit real credentials to Git! Use environment variables or secure storage.
+
 - **FTP Hostname**: `ftpupload.net`
 - **FTP Port**: `21`
-- **FTP Username**: `if0_40337361`
-- **FTP Password**: `your_ftp_password_here`
+- **FTP Username**: `your_ftp_username`
+- **FTP Password**: `your_ftp_password`
 
 ## 🔄 Recommended Solution: Hybrid Approach
 
