@@ -13,7 +13,7 @@ const users = [
   },
 ]
 
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: 'Credentials',
@@ -64,8 +64,8 @@ export const authOptions: NextAuthOptions = {
       return token
     },
     async session({ session, token }) {
-      if (session.user) {
-        session.user.id = token.id as string
+      if (session.user && token.id) {
+        (session.user as any).id = token.id as string
       }
       return session
     },

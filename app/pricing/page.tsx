@@ -98,7 +98,7 @@ export default function PricingPage() {
         body: JSON.stringify({
           planId,
           amount,
-          userId: session.user?.id,
+          userId: (session.user as any)?.id,
         }),
       })
 
@@ -125,7 +125,7 @@ export default function PricingPage() {
                 razorpay_payment_id: response.razorpay_payment_id,
                 razorpay_signature: response.razorpay_signature,
                 planId,
-                userId: session.user?.id,
+                userId: (session.user as any)?.id,
               }),
             })
 

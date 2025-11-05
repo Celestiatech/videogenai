@@ -1,11 +1,7 @@
-import { Metadata } from 'next'
+'use client'
+
 import { Video, Image as ImageIcon, Sparkles, Zap, Shield, Globe, Clock } from 'lucide-react'
 import { motion } from 'framer-motion'
-
-export const metadata: Metadata = {
-  title: 'Features - AI Video Generator',
-  description: 'Discover powerful features of AI Video Generator - text to video, image to video, HD quality, and more.',
-}
 
 export default function FeaturesPage() {
   const features = [
